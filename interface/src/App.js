@@ -1,22 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { card } from './components/atoms';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
+      <div className='flex gap-2'>
+        <card.header>Employé</card.header>
+        <card.header>Lundi</card.header>
+        <card.header>Mardi</card.header>
+        <card.header>Mercredi</card.header>
+        <card.header>Jeudi</card.header>
+        <card.header>Vendredi</card.header>
+        <card.header>Samedi</card.header>
+        <card.header>Dimanche</card.header>
+      </div>
       <table>
-        <thead>
-          <tr>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Employé</th>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Lundi</th>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Mardi</th>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Mercredi</th>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Jeudi</th>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Vendredi</th>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Samedi</th>
-            <th className='bg-[#e6c2bf] px-[20px] text-center rounded-lg font-normal'>Dimanche</th>
-          </tr>
-        </thead>
+        <thead></thead>
         <tbody>
           <tr>
             <td>Bastian Monnin</td>
