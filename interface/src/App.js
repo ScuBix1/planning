@@ -14,21 +14,6 @@ function App() {
         <card.header>Samedi</card.header>
         <card.header>Dimanche</card.header>
       </div>
-      <table>
-        <thead></thead>
-        <tbody>
-          <tr>
-            <td>Bastian Monnin</td>
-            <td>Bastian Monnin</td>
-            <td>Bastian Monnin</td>
-            <td>Bastian Monnin</td>
-            <td>Bastian Monnin</td>
-            <td>Bastian Monnin</td>
-            <td>Bastian Monnin</td>
-            <td>Bastian Monnin</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   );
 }
