@@ -11,7 +11,11 @@ const database = mysql.createConnection({
     password: "root"
 })
 app.get("/", (req, res)=>{
-    return res.json("Reçu du backend")
+    const sql = "SELECT * FROM restaurant.employes"
+    database.query(sql, (err, data)=>{
+        if(err)return res.json(err)
+        return res.json(data)
+    })
 })
 app.listen(8089, ()=>{
     console.log("Lancé sur le port 8089")
