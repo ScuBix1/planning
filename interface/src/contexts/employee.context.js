@@ -3,7 +3,7 @@ const EmployeeContext = React.createContext({
     prenom: '',
     nom: '',
     role: '',
-    date: new format(Date, 'dd/MM/yyyy'),
+    date: new Date,
     heureDebut: '00:00:00',
     heureFin: '00:00:00',
     repos: false,
@@ -19,7 +19,7 @@ export default function EmployeeContextProvider({children}){
     const [prenom, setPrenom] = useState('')
     const [nom, setNom] = useState('')
     const [role, setRole] = useState('')
-    const [date, setDate] = useState(new format(Date, 'dd/MM/yyyy'))
+    const [date, setDate] = useState(new Date)
     const [heureDebut, setHeureDebut] = useState('00:00:00')
     const [heureFin, setHeureFin] = useState('00:00:00')
     const [repos, setRepos] = useState(false)
