@@ -1,57 +1,122 @@
-import React, { createContext, useState, useContext } from "react"
-const EmployeeContext = React.createContext({
-    prenom: '',
-    nom: '',
-    role: '',
-    date: new Date,
-    heureDebut: '00:00:00',
-    heureFin: '00:00:00',
-    repos: false,
-    heureDebutPause: '00:00:00',
-    heureFinPause: '00:00:00',
-    nbHeures: 8,
-    nomJour:'Lundi',
-    setEmployee: (prenom, nom, role, date, nomJour, heureDebut, heureFin, repos, heureDebutPause, heureFinPause, nbHeures)=>{},
-    getEmployee: ()=>{},
+import React, { createContext, useState, useContext } from 'react';
+const EmployeeContext = createContext({
+  prenom: '',
+  nom: '',
+  heureSemaine: 35,
+  couleur: '#ffffff',
+  idRole: '1',
+  heureEffectuees: 0,
+  setEmployee: (
+    prenom,
+    nom,
+    role,
+    date,
+    nomJour,
+    heureDebut,
+    heureFin,
+    repos,
+    heureDebutPause,
+    heureFinPause,
+    nbHeures
+  ) => {
+    return Promise.all;
+  },
+  getEmployee: () => {
+    return Promise.all;
+  },
+});
+export default function EmployeeContextProvider({ children }) {
+  const [prenom, setPrenom] = useState('');
+  const [nom, setNom] = useState('');
+  const [heuresSemaine, setHeuresSemaine] = useState(35);
+  const [idRole, setIdRole] = useState(1);
+  const [heuresEffectuees, setHeuresEffectuees] = useState(0);
+  const setEmployee = async (
+    prenom,
+    nom,
+    heuresSemaine,
+    idRole,
+    heuresEffectuees
+  ) => {
+    const url = 'http://localhost:3000/api/employees';
+    const body = JSON.stringify({
+      prenom,
+      nom,
+      heuresSemaine,
+      idRole,
+      heuresEffectuees,
+    });
+    const headers = { 'Content-Type': 'application/json' };
 
-})
-export default function EmployeeContextProvider({children}){
-    const [prenom, setPrenom] = useState('')
-    const [nom, setNom] = useState('')
-    const [role, setRole] = useState('')
-    const [date, setDate] = useState(new Date)
-    const [heureDebut, setHeureDebut] = useState('00:00:00')
-    const [heureFin, setHeureFin] = useState('00:00:00')
-    const [repos, setRepos] = useState(false)
-    const [heureDebutPause, setHeureDebutPause] = useState('00:00:00')
-    const [heureFinPause, setHeureFinPause] = useState('00:00:00')
-    const [nbHeures, setNbHeures] = useState(8)
-    const [nomJour, setNomJour] = useState('Lundi')
-    const setEmployee = (prenom, nom, role, date, nomJour, heureDebut, heureFin, repos, heureDebutPause, heureFinPause, nbHeures)=>{
-
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: body,
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(
+          data.message ||
+            "Quelque chose s'est mal passé lors de la création de l'employé"
+        );
+      }
+      alert('Employé créé avec succès!');
+    } catch (error) {
+      console.error("Erreur lors de la création de l'employé:", error);
     }
-    const getEmployee = ()=>{}
-    return(
-        <EmployeeContext.Provider value={{
-            prenom: prenom,
-            nom: nom,
-            role: role,
-            date: date,
-            heureDebut: heureDebut,
-            heureFin: heureFin,
-            repos: repos,
-            heureDebutPause: heureDebutPause,
-            heureFinPause: heureFinPause,
-            nbHeures: nbHeures,
-            nomJour: nomJour,
-            setEmployee: setEmployee,
-            getEmployee: getEmployee
-        }}>
-            {children}
-        </EmployeeContext.Provider>
-    )
+  };
+  const getEmployee = async () => {
+    const url = 'http://localhost:3000/api/employees';
+    const body = JSON.stringify({
+      prenom,
+      nom,
+      heuresSemaine,
+      idRole,
+      heuresEffectuees,
+    });
+    const headers = { 'Content-Type': 'application/json' };
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: headers,
+        body: body,
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(
+          data.message ||
+            "Quelque chose s'est mal passé lors de la création de l'employé"
+        );
+      }
+      alert('Employé créé avec succès!');
+    } catch (error) {
+      console.error("Erreur lors de la création de l'employé:", error);
+    }
+  };
+  return (
+    <EmployeeContext.Provider
+      value={{
+        prenom: prenom,
+        nom: nom,
+        heuresSemaine: heuresSemaine,
+        idRole: idRole,
+        heuresEffectuees: heuresEffectuees,
+        setPrenom: setPrenom,
+        setNom: setNom,
+        setHeuresSemaine: setHeuresSemaine,
+        setIdRole: setIdRole,
+        setHeuresEffectuees: setHeuresEffectuees,
+        setEmployee: setEmployee,
+        getEmployee: getEmployee,
+      }}
+    >
+      {children}
+    </EmployeeContext.Provider>
+  );
 }
 
 export const useEmployee = () => {
-    useContext(EmployeeContext)
-}
+  useContext(EmployeeContext);
+};

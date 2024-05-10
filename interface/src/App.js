@@ -1,15 +1,11 @@
 import { useEffect } from 'react';
 import './App.css';
 import { card } from './components/atoms';
-import { EmployeeContextProvider } from './contexts';
+import { EmployeeContextProvider, useEmployee } from './contexts';
 
 function App() {
-  useEffect(() => {
-    fetch('http://localhost:8089')
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-  }, []);
+  const employees = useEmployee();
+  console.log(employees)
   return (
     <EmployeeContextProvider>
       <div className='App'>
@@ -58,7 +54,7 @@ function App() {
           <card.employeeLarge color='#e8fcc0'>
             8h00-12h00
             <br />
-            14h00-17h00
+            14h00-17h00 {employees.map((employee) => {})}
           </card.employeeLarge>
         </div>
       </div>
