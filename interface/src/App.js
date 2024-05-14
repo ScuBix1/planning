@@ -42,43 +42,47 @@ function App() {
                                         {`${employee.nom} ${employee.prenom}`}
                                     </card.employeeLarge>
                                     <card.employeeLarge color={`${employee.couleur}`}>
-                                        {`${employee.idRole}`}
+                                        {`${employee.nomRole}`}
                                     </card.employeeLarge>
+
+                                    {employee.Lundi !== '00:00:00-00:00:00\n00:00:00-00:00:00' ? (
+                                        <card.employeeLarge>{`${employee.Lundi}`}</card.employeeLarge>
+                                    ) : (
+                                        <card.restLarge>Repos</card.restLarge>
+                                    )}
+                                    {employee.Mardi !== '00:00:00-00:00:00\n00:00:00-00:00:00' ? (
+                                        <card.employeeLarge>{`${employee.Mardi}`}</card.employeeLarge>
+                                    ) : (
+                                        <card.restLarge>Repos</card.restLarge>
+                                    )}
+                                    {employee.Mercredi !== '00:00:00-00:00:00\n00:00:00-00:00:00' ? (
+                                        <card.employeeLarge>{`${employee.Mercredi}`}</card.employeeLarge>
+                                    ) : (
+                                        <card.restLarge>Repos</card.restLarge>
+                                    )}
+                                    {employee.Jeudi !== '00:00:00-00:00:00\n00:00:00-00:00:00' ? (
+                                        <card.employeeLarge>{`${employee.Jeudi}`}</card.employeeLarge>
+                                    ) : (
+                                        <card.restLarge>Repos</card.restLarge>
+                                    )}
+                                    {employee.Vendredi !== '00:00:00-00:00:00\n00:00:00-00:00:00' ? (
+                                        <card.employeeLarge>{`${employee.Vendredi}`}</card.employeeLarge>
+                                    ) : (
+                                        <card.restLarge>Repos</card.restLarge>
+                                    )}
+                                    {employee.Samedi !== '00:00:00-00:00:00\n00:00:00-00:00:00' ? (
+                                        <card.employeeLarge>{`${employee.Samedi}`}</card.employeeLarge>
+                                    ) : (
+                                        <card.restLarge>Repos</card.restLarge>
+                                    )}
+                                    {employee.Dimanche !== '00:00:00-00:00:00\n00:00:00-00:00:00' ? (
+                                        <card.employeeLarge>{`${employee.Dimanche}`}</card.employeeLarge>
+                                    ) : (
+                                        <card.restLarge>Repos</card.restLarge>
+                                    )}
                                 </>
                             )
                     )}
-
-                    <card.restLarge>repos</card.restLarge>
-                    <card.employeeLarge color="#e8fcc0">
-                        8h00-12h00
-                        <br />
-                        14h00-17h00
-                    </card.employeeLarge>
-                    <card.employeeLarge color="#e8fcc0">
-                        8h00-12h00
-                        <br />
-                        14h00-17h00
-                    </card.employeeLarge>
-                    <card.employeeLarge color="#e8fcc0">
-                        8h00-12h00
-                        <br />
-                        14h00-17h00
-                    </card.employeeLarge>
-                    <card.employeeLarge color="#e8fcc0">
-                        8h00-12h00
-                        <br />
-                        14h00-17h00
-                    </card.employeeLarge>
-                    <card.employeeLarge color="#e8fcc0">
-                        8h00-12h00
-                        <br />
-                        14h00-17h00
-                    </card.employeeLarge>
-                    <card.employeeLarge color="#e8fcc0">
-                        8h00-12h00
-                        <br />
-                        14h00-17h00
-                    </card.employeeLarge>
                 </div>
             </div>
         </EmployeeContextProvider>
