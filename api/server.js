@@ -80,6 +80,22 @@ app.put("/api/employees/:id", (req, res)=>{
         })
     })
 })
+app.delete('/api/employees/:id', (req, res)=>{
+    const {id} = req.params
+    const deletePlannigSql = "DELETE FROM restaurant.planning WHERE idEmploye = ?"
+    const deleteEmployesSql = "DELETE FROM restaurant.employes WHERE idEmploye = ?"
+    database.query(deletePlannigSql, [id], (err, result) => {
+        if(err){
+            return res.status(500).json({error: err.message})
+        }
+        database.query(deleteEmployesSql, [id], (err, result)=>{
+            if(err){
+                return res.status(500).json({error: err.message})
+            }
+            return res.status(200).json({message: "Employé et ses horaires supprimés avec succès"})
+        })
+    })
+})
 app.listen(8089, ()=>{
     console.log("Lancé sur le port 8089")
 })
