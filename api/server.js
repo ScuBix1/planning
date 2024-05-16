@@ -19,7 +19,7 @@ app.get("/api/employees", (req, res)=>{
         return res.json(data)
     })
 })
-app.post("/api/update/employees", (req, res)=>{
+app.post("/api/add/employees", (req, res)=>{
     const {nom, prenom, idRole, couleur, horaires} = req.body
     if(!nom||!prenom||!idRole||!couleur||!horaires){
         return res.status(400).json({error: "Tout les champs doivent être remplis"})
