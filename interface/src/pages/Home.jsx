@@ -4,7 +4,7 @@ import { Planning } from '../contexts'
 import { ButtonUpdateEmployee } from '../components/atoms/button'
 
 const Home = () => {
-    const { employees, action, employeeSelected, setEmployeeSelected, updateEmployee } = Planning.usePlanning()
+    const { employees, action, employeeSelected } = Planning.usePlanning()
     console.log('employees=>', employeeSelected, 'action =>', action)
     return (
         <div className="App">
